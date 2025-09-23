@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:58:44 by nefimov           #+#    #+#             */
-/*   Updated: 2025/09/23 18:53:07 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/09/23 21:09:06 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ Contact::Contact()  {
 	nickname  = "";
 	phone_number = "";
 	darkest_secret = "";
-	// std::cout << "Contact default constructor called" << "\n";
 }
 
 Contact::Contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds)  {
@@ -28,13 +27,9 @@ Contact::Contact(std::string fn, std::string ln, std::string nn, std::string pn,
 	nickname  = nn;
 	phone_number = pn;
 	darkest_secret = ds;
-	// std::cout << "Contact field constructor called" << "\n";
-	// std::cout << "Contact created" << "/n";
 }
 
-Contact::~Contact() {
-	// std::cout << "Contact destructor called!" << "\n";
-}
+Contact::~Contact() {}
 
 std::string Contact::get_first_name() {
 	return (first_name);

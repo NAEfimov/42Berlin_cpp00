@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:58:47 by nefimov           #+#    #+#             */
-/*   Updated: 2025/09/23 20:57:12 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/09/23 21:11:28 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,9 @@
 #include <iostream>
 #include <iomanip>
 
-PhoneBook::PhoneBook() : num(0) {
-	// std::cout << "PhoneBook default constructor called" << "\n";
-}
+PhoneBook::PhoneBook() : num(0) {}
 
-PhoneBook::~PhoneBook() {
-	// std::cout << "PhoneBook destructor called" << "\n";
-}
+PhoneBook::~PhoneBook() {}
 
 void	PhoneBook::add_contact(Contact cont) {
 	contacts_list[num % MAX_CONTACTS] = cont;
@@ -44,8 +40,6 @@ void	PhoneBook::display_contacts() {
 	std::cout << std::setw(CL_WIDTH) << "Last name" << "|";
 	std::cout << std::setw(CL_WIDTH) << "Nickname" << std::endl;
 	std::cout << "----------|----------|----------|----------" << std::endl;
-
-	
 		
 	for (int i = 0; i < max; ++i) {
 		std::cout << std::setw(CL_WIDTH) << (i + 1) << "|";
