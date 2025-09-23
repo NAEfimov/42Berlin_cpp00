@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:58:13 by nefimov           #+#    #+#             */
-/*   Updated: 2025/09/23 18:41:32 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/09/23 19:45:45 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ public:
 	void	add_contact(Contact cont);
 	void	display_contacts();
 	void	display_contact(int i);
+	int		get_num();
 };
 
 #endif

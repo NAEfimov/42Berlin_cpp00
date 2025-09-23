@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:58:47 by nefimov           #+#    #+#             */
-/*   Updated: 2025/09/23 18:52:41 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/09/23 20:57:12 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ void	PhoneBook::display_contacts() {
 		max = num;
 	else
 		max = MAX_CONTACTS;
+	
+	std::cout << std::endl;
+	std::cout << std::setw(CL_WIDTH) << "Index" << "|";
+	std::cout << std::setw(CL_WIDTH) << "First name" << "|";
+	std::cout << std::setw(CL_WIDTH) << "Last name" << "|";
+	std::cout << std::setw(CL_WIDTH) << "Nickname" << std::endl;
+	std::cout << "----------|----------|----------|----------" << std::endl;
+
+	
 		
 	for (int i = 0; i < max; ++i) {
 		std::cout << std::setw(CL_WIDTH) << (i + 1) << "|";
@@ -60,14 +69,25 @@ void	PhoneBook::display_contacts() {
 			field.resize(CL_WIDTH);
 			field[CL_WIDTH - 1] = '.';
 		}
-		std::cout << std::setw(CL_WIDTH) << field << "\n";
+		std::cout << std::setw(CL_WIDTH) << field << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void	PhoneBook::display_contact(int i) {
+	std::cout << std::endl;
+	std::cout << "First name: ";
 	std::cout << contacts_list[i].get_first_name() << std::endl;
+	std::cout << "Last name: ";
 	std::cout << contacts_list[i].get_last_name() << std::endl;
+	std::cout << "Nickname: ";
 	std::cout << contacts_list[i].get_nickname() << std::endl;
+	std::cout << "Phone number: ";
 	std::cout << contacts_list[i].get_phone_number() << std::endl;
+	std::cout << "Darkest secret: ";
 	std::cout << contacts_list[i].get_darkest_secret() << std::endl;
+}
+
+int		PhoneBook::get_num() {
+	return (num);
 }
