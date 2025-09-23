@@ -6,28 +6,21 @@
 /*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:58:44 by nefimov           #+#    #+#             */
-/*   Updated: 2025/09/23 21:09:06 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/09/23 21:18:46 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iostream>
 
-Contact::Contact()  {
-	first_name = "";
-	last_name = "";
-	nickname  = "";
-	phone_number = "";
-	darkest_secret = "";
-}
+Contact::Contact() : 
+	first_name(""), last_name(""), nickname(""), phone_number(""),
+	darkest_secret("") {}
 
-Contact::Contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds)  {
-	first_name = fn;
-	last_name = ln;
-	nickname  = nn;
-	phone_number = pn;
-	darkest_secret = ds;
-}
+Contact::Contact(std::string fn, std::string ln, std::string nn,
+	std::string pn, std::string ds) :
+	first_name(fn), last_name(ln), nickname(nn), phone_number(pn),
+	darkest_secret(ds) {}
 
 Contact::~Contact() {}
 
