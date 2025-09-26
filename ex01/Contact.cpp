@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:58:44 by nefimov           #+#    #+#             */
-/*   Updated: 2025/09/23 21:18:46 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/09/24 10:58:21 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@ Contact::Contact(std::string fn, std::string ln, std::string nn,
 
 Contact::~Contact() {}
 
-std::string Contact::get_first_name() {
+std::string Contact::get_first_name() const {
 	return (first_name);
 }
 
-std::string Contact::get_last_name() {
+std::string Contact::get_last_name() const {
 	return (last_name);
 }
 
-std::string Contact::get_nickname() {
+std::string Contact::get_nickname() const {
 	return (nickname);	
 }
 
-std::string Contact::get_phone_number() {
+std::string Contact::get_phone_number() const {
 	return (phone_number);
 }
 
-std::string Contact::get_darkest_secret() {
+std::string Contact::get_darkest_secret() const {
 	return (darkest_secret);
 }
