@@ -6,21 +6,46 @@
 /*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:08:24 by nefimov           #+#    #+#             */
-/*   Updated: 2025/09/30 17:02:12 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/09/30 17:42:00 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <ctime>
 #include <iomanip>
+
+static std::string getTimestampStringFname() {
+	std::time_t now = std::time(0);
+	std::tm* localtm = std::localtime(&now);
+	std::stringstream ss;
+	ss << 1900 + localtm->tm_year
+		<< std::setw(2) << std::setfill('0') << 1 + localtm->tm_mon
+		<< std::setw(2) << std::setfill('0') << localtm->tm_mday
+		<< "_"
+		<< std::setw(2) << std::setfill('0') << localtm->tm_hour
+		<< std::setw(2) << std::setfill('0') << localtm->tm_min
+		<< std::setw(2) << std::setfill('0') << localtm->tm_sec
+		<< ".log";
+	return ss.str();
+}
+
+// Redirect cout to file
+static std::ofstream account_log_stream(getTimestampStringFname().c_str());
+struct CoutRedirector {
+	CoutRedirector() { std::cout.rdbuf(account_log_stream.rdbuf()); }
+	~CoutRedirector() { std::cout.rdbuf(orig_buf); }
+	static std::streambuf* orig_buf;
+};
+std::streambuf* CoutRedirector::orig_buf = std::cout.rdbuf();
+static CoutRedirector redirector;
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
-
-// Account::Account( void ) {}
 
 Account::Account( int initial_deposit ) {
 	_accountIndex = _nbAccounts;
@@ -67,8 +92,6 @@ int		Account::getNbWithdrawals( void ) {
 }
 
 void	Account::displayAccountsInfos( void ) {
-	// std::cout << "call Account::displayAccountsInfos( void )" << std::endl;
-	// [19920104_091532] accounts:8;total:20049;deposits:0;withdrawals:0
 	_displayTimestamp();
 	std::cout <<
 		"accounts:"		<< _nbAccounts			<< ";" <<
@@ -93,7 +116,6 @@ void	Account::_displayTimestamp( void ) {
 }
 
 void	Account::makeDeposit( int deposit ) {
-// [19920104_091532] index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1
 	_displayTimestamp();
 	std::cout <<
 		"index:"		<< _accountIndex	<< ";" <<
@@ -110,8 +132,6 @@ void	Account::makeDeposit( int deposit ) {
 }
 
 bool	Account::makeWithdrawal( int withdrawal ) {
-// [19920104_091532] index:0;p_amount:47;withdrawal:refused
-// [19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
 	_displayTimestamp();
 	std::cout <<
 		"index:"		<< _accountIndex	<< ";" <<
@@ -140,7 +160,6 @@ int		Account::checkAmount( void ) const {
 }
 
 void	Account::displayStatus( void ) const {
-	// [19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
 	_displayTimestamp();
 	std::cout <<
 		"index:"		<< _accountIndex	<< ";" <<
