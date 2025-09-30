@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:08:24 by nefimov           #+#    #+#             */
-/*   Updated: 2025/09/30 17:42:00 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/09/30 17:47:39 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	Account::makeDeposit( int deposit ) {
 		"deposit:"		<< deposit			<< ";" ;
 
 	_amount += deposit;
+	_totalAmount += deposit;
 	++_nbDeposits;
 	++_totalNbDeposits;
 	
@@ -144,6 +145,7 @@ bool	Account::makeWithdrawal( int withdrawal ) {
 	}
 	
 	_amount -= withdrawal;
+	_totalAmount -= withdrawal;
 	++_nbWithdrawals;
 	++_totalNbWithdrawals;
 	
