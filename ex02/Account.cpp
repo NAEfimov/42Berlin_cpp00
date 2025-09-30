@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:08:24 by nefimov           #+#    #+#             */
-/*   Updated: 2025/09/30 17:47:39 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/09/30 18:08:24 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include <sstream>
 #include <ctime>
 #include <iomanip>
-
+/*
+// Get timestamp filename for .log file
 static std::string getTimestampStringFname() {
 	std::time_t now = std::time(0);
 	std::tm* localtm = std::localtime(&now);
@@ -41,6 +42,7 @@ struct CoutRedirector {
 };
 std::streambuf* CoutRedirector::orig_buf = std::cout.rdbuf();
 static CoutRedirector redirector;
+*/
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
