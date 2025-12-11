@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:58:44 by nefimov           #+#    #+#             */
-/*   Updated: 2025/09/24 10:58:21 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/12/11 13:42:01 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,18 @@ std::string Contact::get_phone_number() const {
 
 std::string Contact::get_darkest_secret() const {
 	return (darkest_secret);
+}
+
+void Contact::print() const {
+	std::cout << std::endl;
+	std::cout << "First name: ";
+	std::cout << get_first_name() << std::endl;
+	std::cout << "Last name: ";
+	std::cout << get_last_name() << std::endl;
+	std::cout << "Nickname: ";
+	std::cout << get_nickname() << std::endl;
+	std::cout << "Phone number: ";
+	std::cout << get_phone_number() << std::endl;
+	std::cout << "Darkest secret: ";
+	std::cout << get_darkest_secret() << std::endl;
 }

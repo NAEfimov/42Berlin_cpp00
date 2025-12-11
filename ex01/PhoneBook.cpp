@@ -6,11 +6,11 @@
 /*   By: nefimov <nefimov@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:58:47 by nefimov           #+#    #+#             */
-/*   Updated: 2025/09/23 21:11:28 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/12/11 14:06:49 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define	CL_WIDTH 10
+
 
 #include "PhoneBook.hpp"
 #include <iostream>
@@ -20,12 +20,12 @@ PhoneBook::PhoneBook() : num(0) {}
 
 PhoneBook::~PhoneBook() {}
 
-void	PhoneBook::add_contact(Contact cont) {
+void PhoneBook::add_contact(Contact cont) {
 	contacts_list[num % MAX_CONTACTS] = cont;
 	++num;
 }
 
-void	PhoneBook::display_contacts() {
+void PhoneBook::display_contacts() {
 	int	max;
 	std::string	field;
 
@@ -42,46 +42,40 @@ void	PhoneBook::display_contacts() {
 	std::cout << "----------|----------|----------|----------" << std::endl;
 		
 	for (int i = 0; i < max; ++i) {
-		std::cout << std::setw(CL_WIDTH) << (i + 1) << "|";
+		std::cout << std::setw(CL_WIDTH)
+				  << (i + 1)
+				  << "|";
 		
-		field = contacts_list[i].get_first_name();
-		if (field.length() > CL_WIDTH) {
-			field.resize(CL_WIDTH);
-			field[CL_WIDTH - 1] = '.';
-		}
-		std::cout << std::setw(CL_WIDTH) << field << "|";
+		std::cout << std::setw(CL_WIDTH)
+				  << get_format_field(contacts_list[i].get_first_name())
+				  << "|";
 		
-		field = contacts_list[i].get_last_name();
-		if (field.length() > CL_WIDTH) {
-			field.resize(CL_WIDTH);
-			field[CL_WIDTH - 1] = '.';
-		}
-		std::cout << std::setw(CL_WIDTH) << field << "|";
+		std::cout << std::setw(CL_WIDTH)
+				  << get_format_field(contacts_list[i].get_last_name())
+				  << "|";
 		
-		field = contacts_list[i].get_nickname();
-		if (field.length() > CL_WIDTH) {
-			field.resize(CL_WIDTH);
-			field[CL_WIDTH - 1] = '.';
-		}
-		std::cout << std::setw(CL_WIDTH) << field << std::endl;
+		std::cout << std::setw(CL_WIDTH)
+				  << get_format_field(contacts_list[i].get_nickname())
+				  << std::endl;
 	}
 	std::cout << std::endl;
 }
 
-void	PhoneBook::display_contact(int i) {
-	std::cout << std::endl;
-	std::cout << "First name: ";
-	std::cout << contacts_list[i].get_first_name() << std::endl;
-	std::cout << "Last name: ";
-	std::cout << contacts_list[i].get_last_name() << std::endl;
-	std::cout << "Nickname: ";
-	std::cout << contacts_list[i].get_nickname() << std::endl;
-	std::cout << "Phone number: ";
-	std::cout << contacts_list[i].get_phone_number() << std::endl;
-	std::cout << "Darkest secret: ";
-	std::cout << contacts_list[i].get_darkest_secret() << std::endl;
+void PhoneBook::display_contact(int idx) {
+	if (idx < 0 || idx >= MAX_CONTACTS)
+		return ;
+	contacts_list[idx].print();
 }
 
-int		PhoneBook::get_num() {
+int	PhoneBook::get_num() {
 	return (num);
+}
+
+std::string	PhoneBook::get_format_field(std::string const src) const {
+	std::string	field = src;
+	if (field.length() > CL_WIDTH) {
+		field.resize(CL_WIDTH);
+		field[CL_WIDTH - 1] = '.';
+	}
+	return (field);
 }
