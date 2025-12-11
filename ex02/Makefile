@@ -10,8 +10,8 @@ NAME		:= tests
 #
 # SRCS			source files
 #
+# OBJ_DIR		object file location
 # OBJS			object files
-# DEPS			dependency files
 #
 # CC			compiler
 # CFLAGS		compiler flags
@@ -28,7 +28,6 @@ SRCS		:=	tests.cpp	\
 OBJ_DIR		:=	obj
 
 OBJS		:= $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
-DEPS		:= $(OBJS:.o=.d)
 
 CPP			:= c++
 CFLAGS		:= -Wall -Wextra -Werror -std=c++98
